@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "Emmetienne D365 tools",
+    "description": "A compilation of tools for D365",
+    "version": "1.0",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "permissions": [
+        "tabs"
+    ]
+}
