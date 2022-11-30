@@ -11,7 +11,6 @@
 
   <style type="text/css">
     body {
-      padding: 20px;
       min-width: 780px;
       max-width: 580px;
     }
@@ -20,14 +19,25 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col">
-        Emmmetienne D365 tools
+        <h3>
+          Emmmetienne
+          <small class="text-muted"> D365 tools</small>
+        </h3>
       </div>
     </div>
+  </div>
+  <div class="container-fluid">
     <div class="row">
-      <button type="button" id="enableRibbonDebugButton" class="btn btn-primary">Enable ribbon debug</button>
+      <div class="col text-center">
+        <button type="button" id="enableRibbonDebugButton" class="btn btn-primary wide">Enable ribbon debug</button>
+      </div>
+      <div class="col text-center">
+        <button type="button" id="enablePerformanceMonitorButton" class="btn btn-primary wide">Enable performance
+          monitor</button>
+      </div>
     </div>
   </div>
 </body>

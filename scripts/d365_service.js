@@ -1,7 +1,8 @@
 const enableRibbonDebugButton = document.getElementById('enableRibbonDebugButton');
-
+const enablePerformanceMonitorButton = document.getElementById('enablePerformanceMonitorButton');
 
 enableRibbonDebugButton.addEventListener('click', activateDebugRibbon);
+enablePerformanceMonitorButton.addEventListener('click', activatePerformanceMonitor);
 
 async function activateDebugRibbon() {
 
@@ -16,7 +17,23 @@ async function activateDebugRibbon() {
 
     let composedUrl = baseUrl + ribbonDebugString;
 
-    chrome.tabs.update(currentTab.id, {url: composedUrl});
+    chrome.tabs.update(currentTab.id, { url: composedUrl });
+}
+
+async function activatePerformanceMonitor() {
+    const key = "perf";
+    const value = true;
+
+    let currentTab = await GetCurrentTab();
+
+    if (!currentTab)
+        return;
+
+    let currentUrl = new URL(currentTab.url);
+
+    currentUrl.searchParams.set(key, value);
+
+    chrome.tabs.update(currentTab.id, { url: currentUrl.href });
 }
 
 async function GetCurrentTab() {
