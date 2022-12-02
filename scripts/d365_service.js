@@ -21,9 +21,6 @@ async function activateDebugRibbon() {
 }
 
 async function activatePerformanceMonitor() {
-    const key = "perf";
-    const value = true;
-
     let currentTab = await GetCurrentTab();
 
     if (!currentTab)
@@ -31,8 +28,17 @@ async function activatePerformanceMonitor() {
 
     let currentUrl = new URL(currentTab.url);
 
-    currentUrl.searchParams.set(key, value);
+    let key = "perf";
+    let value = false;
 
+    if (currentUrl.searchParams.has(key)){
+        value = !currentUrl.searchParams.get(key);
+    }
+    else{
+        value = true;
+    }
+
+    currentUrl.searchParams.set(key, value);
     chrome.tabs.update(currentTab.id, { url: currentUrl.href });
 }
 
